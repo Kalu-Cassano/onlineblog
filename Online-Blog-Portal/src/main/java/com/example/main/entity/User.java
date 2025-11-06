@@ -17,7 +17,7 @@ public class User {
 
     @Column(nullable = false, unique = true, length = 100)
     private String email;
-
+    
     @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
@@ -35,7 +35,7 @@ public class User {
         this.createdAt = OffsetDateTime.now();
     }
 
-    // === Getters and Setters ===
+    // Getters and Setters 
     public Long getUserId() {
         return userId;
     }
