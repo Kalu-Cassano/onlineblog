@@ -22,7 +22,7 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
-    private Comment parent;  // for replies
+    private Comment parent;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
@@ -35,53 +35,22 @@ public class Comment {
         this.createdAt = OffsetDateTime.now();
     }
 
-    // ====== Getters & Setters ======
+    // GETTERS + SETTERS
+    public Long getCommentId() { return commentId; }
+    public void setCommentId(Long commentId) { this.commentId = commentId; }
 
-    public Long getCommentId() {
-        return commentId;
-    }
+    public Post getPost() { return post; }
+    public void setPost(Post post) { this.post = post; }
 
-    public void setCommentId(Long commentId) {
-        this.commentId = commentId;
-    }
+    public User getAuthor() { return author; }
+    public void setAuthor(User author) { this.author = author; }
 
-    public Post getPost() {
-        return post;
-    }
+    public Comment getParent() { return parent; }
+    public void setParent(Comment parent) { this.parent = parent; }
 
-    public void setPost(Post post) {
-        this.post = post;
-    }
+    public String getContent() { return content; }
+    public void setContent(String content) { this.content = content; }
 
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
-
-    public Comment getParent() {
-        return parent;
-    }
-
-    public void setParent(Comment parent) {
-        this.parent = parent;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public OffsetDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+    public OffsetDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(OffsetDateTime createdAt) { this.createdAt = createdAt; }
 }

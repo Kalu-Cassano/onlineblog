@@ -7,100 +7,90 @@ import java.time.OffsetDateTime;
 @Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long userId;
 
-    @Column(nullable = false, unique = true, length = 50)
-    private String username;
+	@Column(nullable = false, unique = true)
+	private String username;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private String email;
-    
-    @Column(name = "password_hash", nullable = false, length = 255)
-    private String passwordHash;
+	@Column(nullable = false, unique = true)
+	private String email;
 
-    @Column(nullable = false)
-    private Short role;
+	@Column(nullable = false)
+	private String passwordHash;
 
-    @Column(name = "display_name", length = 100)
-    private String displayName;
+	@Column(nullable = false)
+	private String displayName;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    private OffsetDateTime createdAt;
+	@Column(nullable = false)
+	private Short role; // 0=user, 1=admin
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = OffsetDateTime.now();
-    }
+	@Column(nullable = false, updatable = false)
+	private OffsetDateTime createdAt;
 
-    // Getters and Setters 
-    public Long getUserId() {
-        return userId;
-    }
+	public User() {
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = OffsetDateTime.now();
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	// GETTERS & SETTERS
+	public Long getUserId() {
+		return userId;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getPasswordHash() {
-        return passwordHash;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public Short getRole() {
-        return role;
-    }
+	public String getPasswordHash() {
+		return passwordHash;
+	}
 
-    public void setRole(Short role) {
-        this.role = role;
-    }
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
 
-    public String getDisplayName() {
-        return displayName;
-    }
+	public String getDisplayName() {
+		return displayName;
+	}
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
-    public OffsetDateTime getCreatedAt() {
-        return createdAt;
-    }
+	public Short getRole() {
+		return role;
+	}
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+	public void setRole(Short role) {
+		this.role = role;
+	}
 
-    public User() {}
+	public OffsetDateTime getCreatedAt() {
+		return createdAt;
+	}
 
-    public User(Long userId, String username, String email, String passwordHash, Short role, String displayName, OffsetDateTime createdAt) {
-        this.userId = userId;
-        this.username = username;
-        this.email = email;
-        this.passwordHash = passwordHash;
-        this.role = role;
-        this.displayName = displayName;
-        this.createdAt = createdAt;
-    }
+	public void setCreatedAt(OffsetDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
 }

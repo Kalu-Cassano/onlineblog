@@ -1,12 +1,17 @@
 package com.example.main.service;
 
-import com.example.main.entity.Comment;
+import com.example.main.dto.CommentRequest;
+import com.example.main.dto.CommentResponse;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface CommentService {
-    Comment createComment(Comment comment, Long postId, Long userId, Long parentId);
-    List<Comment> getCommentsByPost(Long postId);
-    Optional<Comment> getCommentById(Long id);
-    void deleteComment(Long id);
+	CommentResponse createComment(CommentRequest request);
+
+	List<CommentResponse> getCommentsByPost(Long postId);
+
+	Optional<CommentResponse> getCommentById(Long id);
+
+	void deleteComment(Long id);
 }
